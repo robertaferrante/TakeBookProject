@@ -1,9 +1,10 @@
 package takebook.model.DAO;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 import takebook.model.Autore;
+import takebook.model.Libro;
 
 public interface AutoreDAO {
 
@@ -12,5 +13,6 @@ public interface AutoreDAO {
 	//public void delete();
 	public ArrayList<Autore>  readAll();
 	public Autore read(String nome, String cognome);
+	public List<Libro> getLibro(String nome, String cognome);
 
  }

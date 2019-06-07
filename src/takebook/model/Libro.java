@@ -4,7 +4,7 @@ public class Libro {
 	//attributi
 	private int id_libro;
 	private String titolo;
-	private int isbn;
+	private String isbn;
 	private int anno_pubblicazione;
     private String categoria;
    
@@ -15,7 +15,7 @@ public class Libro {
 	
      //costruttore con parametri
 
-     public Libro(int id_libro,String titolo,int isbn,int anno_pubblicazione,String categoria) {
+     public Libro(int id_libro,String titolo,String isbn,int anno_pubblicazione,String categoria) {
     	this.id_libro=id_libro;
     	this.titolo=titolo;
     	this.isbn=isbn;
@@ -36,10 +36,10 @@ public class Libro {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-	public int getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
-	public void setIsbn(int isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 	public int getAnno_pubblicazione() {
@@ -53,6 +53,11 @@ public class Libro {
 	}
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
+	}
+	
+	@Override
+	public String toString() {
+		return titolo+" "+isbn+" "+anno_pubblicazione+" "+categoria;
 	}
 
 

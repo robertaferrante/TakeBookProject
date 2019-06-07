@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
-	
 	<head>
 	<!--IN META SONO CONTENUTE TUTTE LE INFORMAZIONI RIGUARDATI LA PAGINA-->
 	<!-- viewport adatta la visibilita' della pagine al browser; con content width impostiamo la larghezza in base
 	 alla larghezza device-width cioè dello schermo del dispositivo -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="author" content="Ascione Dalila, Ferrante Roberta, Mundo Consiglia, Siciliano Flavia">
-	<title>Home Page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Ascione Dalila, Ferrante Roberta, Mundo Consiglia, Siciliano Flavia">
+		<title>Home Page</title>
 		<!--CSS-->
 		<style>
 		body {font-family: Arial, Helvetica, sans-serif; background-color: black;}
-		form {left: 60%;
+		form {	left: 60%;
 				right: 60%;
 			    top: 50%;
 			    margin-left: -25%;
@@ -70,48 +69,32 @@
 		  float: right;
 		  padding-top: 16px;
 		}
-		
-		<!--CAMBIA GLI STILI PER SPAN E CANCELLA I PULSANTI SU SCHERMI MOLTO PICCOLI-->
-		@media screen and (max-width: 300px) {
-		  span.psw {
-		     display: block;
-		     float: none;
-		  }
-		  .cancelbtn {
-		     width: 100%;
-		  }
-		}
 		</style>
 	</head>
 	<body>
+		<font color="white" face="Bodoni"><h2 align="center" >TakeBook</h2></font>
 	
-	<h2 align="center">TakeBook</h2>
-	
-	<form method ="post" action="./ServletIndex" >
-	  <div class="imgcontainer">
-	    <img src="images/avatar.png" alt="Avatar" class="avatar">
-	  </div>
-	
-	  <div class="container">
-	    <label for="em"><b>Inserisci la tua email:</b></label>
-	     <input type="text" placeHolder="Email" name="email" id ="E">
-	
-	    <label for="psw"><b>Inserisci la tua password:</b></label>
-	    <input type="password" placeHolder="Password" name="password" id="P" required>
-	        
-	    <button type="submit">Login</button>
-	 
-	    <label>
-	      <input type="checkbox" checked="checked" name="ricordami"> Ricordami
-	    </label>
-	  </div>
-		Non sei ancora registrato? <a href="./formregistrazione.html">Clicca qui!</a>
-	  <div class="container" style="background-color:#f1f1f1">
-	    <button type="reset" class="resetbtn">Reset</button>
-	    
-	    <span class="psw">Forgot <a href="">password?</a></span>
-	  </div>
-	</form>
-	
+		<form method ="post" action="./ServletIndex" >
+		  	<div class="imgcontainer">
+		    	<img src="images/avatar.png" alt="Avatar" class="avatar">
+		  	</div>
+		
+		  	<div class="container">
+		    	<label for="em"><b>Inserisci la tua email:</b></label>
+		     	<input type="text" placeHolder="Email" name="email" id ="E">
+		
+		    	<label for="psw"><b>Inserisci la tua password:</b></label>
+		    	<input type="password" placeHolder="Password" name="password" id="P" required>
+		        
+		    	<button type="submit">Login</button>
+		 	</div>
+		 	<br>
+			  Non sei ancora registrato? <a href="./formregistrazione.html">Clicca qui!</a>
+		  	<div class="container" style="background-color:#f1f1f1">
+		    	<button type="reset" class="resetbtn">Reset</button>
+		    
+		    	<span class="psw">Unisciti a noi!</span>
+		  	</div>
+		</form>
 	</body>
 </html>

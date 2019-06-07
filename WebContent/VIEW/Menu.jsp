@@ -5,17 +5,79 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Menu</title>
+		<style>
+			body {
+			  margin: 0;
+			}
+			
+			input[type=text] {
+			  width: 100%;
+			  padding: 12px 20px;
+			  margin: 8px 0;
+			  display: inline-block;
+			  border: 1px solid #ccc;
+			  box-sizing: border-box;
+			}
+			
+			button {
+			  background-color: #4CAF50;
+			  color: white;
+			  padding: 14px 20px;
+			  margin: 8px 0;
+			  border: none;
+			  cursor: pointer;
+			  width: 100%;
+			}
+				
+			ul {
+			  list-style-type: none;
+			  margin: 0;
+			  padding: 0;
+			  width: 25%;
+			  background-color: #f1f1f1;
+			  position: fixed;
+			  height: 100%;
+			  overflow: auto;
+			}
+			
+			li a {
+			  display: block;
+			  color: #000;
+			  padding: 8px 16px;
+			  text-decoration: none;
+			}
+			
+			li a.active {
+			  background-color: #4CAF50;
+			  color: white;
+			}
+			
+			li a:hover:not(.active) {
+			  background-color: #555;
+			  color: white;
+			}
+		</style>
 	</head>
 	<body>
-		<h1>Ciao <%= request.getSession().getAttribute("nome") %></h1><br>
-		
-		
-		<div class="menu">
 		<ul>
-		<li><a href="./VIEW/Menu.jsp">Home</a></li>
-		
-		<li><a href="C:\Users\Protom\Desktop\Doc\Java\TakeBook\WebContent/index.html">Logout</a></li>
-	</ul>
-	</div>
+		  <li><a class="active" href="C:\Users\Protom\git\TakeBookProject\WebContent/VIEW//menu.jsp">Home</a></li>
+		  <li><a href="">Contact</a></li>
+		  <li><a href="#about">About</a></li>
+		  <li><a href="http://localhost:8080/TakeBook/index.html">Logout</a></li>
+		</ul>
+		<div style="margin-left:35%;margin-right:10%;padding:1px 16px;height:1000px;">
+  			<h1 align="center">Ciao <%= request.getSession().getAttribute("nome") %></h1>
+  			<form>
+  			
+			  
+			  <input type="radio" name="gender" value="libro"> Ricerca per titolo<br>
+			  <input type="radio" name="gender" value="autore"> Ricerca per autore<br>
+			  <input type="text" placeHolder="Cerca" name="cerca" id ="R">
+			  <button type="submit">Cerca</button>
+
+
+			  
+			</form> 
+		</div>
 	</body>
 </html>

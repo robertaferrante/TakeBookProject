@@ -43,5 +43,10 @@ public class Autore {
 	public void setNazione(String nazione) {
 		this.nazione = nazione;
 	}
+	
+	@Override
+	public String toString() {
+		return id_autore+" "+nome+" "+cognome+" "+nazione;
+	}
 
 }

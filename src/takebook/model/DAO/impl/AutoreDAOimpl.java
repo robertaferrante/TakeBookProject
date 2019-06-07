@@ -1,12 +1,15 @@
 package takebook.model.DAO.impl;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import takebook.connection.DBConnection;
 import takebook.model.Autore;
+import takebook.model.Libro;
 import takebook.model.DAO.AutoreDAO;
 
 
@@ -57,10 +60,33 @@ public class AutoreDAOimpl implements AutoreDAO {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ListaAutori;
 
+	}
+
+	@Override
+	public List<Libro> getLibro(String nome, String cognome) {
+		List<Libro> listaLibro = new ArrayList<Libro>();
+		
+		String q = "SELECT * from scrive join libro on scrive.id_libro=libro.id_libro join autore on autore.id_autore=scrive.id_autore WHERE autore.nome=? AND autore.cognome=?";
+		try {
+			PreparedStatement ps = dbConn.getConnection().prepareStatement(q);
+			ps.setString(1, nome);
+			ps.setString(2, cognome);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Libro l = new Libro(rs.getInt("id_libro"),rs.getString("titolo"), rs.getString("isbn"), rs.getInt("anno_pubblicazione"),rs.getString("categoria"));
+				listaLibro.add(l);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return listaLibro;
 	}
 }
