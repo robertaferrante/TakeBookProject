@@ -8,7 +8,16 @@
 		<style>
 			body {
 			  margin: 0;
+			  background-image: url('https://images.pexels.com/photos/347139/pexels-photo-347139.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500') ;
+			  height: 100%;
+			  background-position: center;
+  				background-repeat: no-repeat;
+  				background-size: cover;
+  	
 			}
+			
+		
+			
 			
 			input[type=text] {
 			  width: 100%;
@@ -65,16 +74,17 @@
 		  <li><a href="#about">About</a></li>
 		  <li><a href="http://localhost:8080/TakeBook/index.html">Logout</a></li>
 		</ul>
-		<div style="margin-left:35%;margin-right:10%;padding:1px 16px;height:1000px;">
-  			<h1 align="center">Ciao <%= request.getSession().getAttribute("nome") %></h1>
-  			
-  			<form>
-			  <input type="radio" name="ricerca" value="libro"> Ricerca per titolo<br>
-			  <input type="radio" name="ricerca" value="autore"> Ricerca per autore<br>
-			  <input type="text" placeHolder="Cerca" name="cerca" id ="R">
-			  <button type="submit">Cerca</button>
-
-			</form> 
+			<div style="margin-left:35%;margin-right:10%;padding:1px 16px;height:1000px;"  >
+	  			<h1 align="center">Ciao <%= request.getSession().getAttribute("nome") %></h1>
+	  			
+	  			<form>
+				  <input type="radio" name="ricerca" value="libro"> Ricerca per titolo<br>
+				  <input type="radio" name="ricerca" value="autore"> Ricerca per autore<br>
+				  <input type="text" placeHolder="Cerca" name="cerca" id ="R">
+				  <button type="submit">Cerca</button>
+	
+				</form> 
+			
 		</div>
 	</body>
 </html>

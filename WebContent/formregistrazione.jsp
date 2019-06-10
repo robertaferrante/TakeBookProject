@@ -20,7 +20,14 @@
 		<style>
 			body {
 			  font-family: Arial, Helvetica, sans-serif;
-			  background-color: black;
+			  background-image: url('https://assets.poetryfoundation.org/uploads/contentImages/_1092xAUTO_fit_top-center/library-header.jpg?1092');
+			  height: 100%;
+			  background-position: center;
+  				background-repeat: no-repeat;
+  				background-size: cover;
+  				 height: 180vh;
+ 	 		 
+ 	 		  
 			}
 			
 			* {
@@ -140,7 +147,7 @@
 		  </div>
 		  
 		  <div class="container signin">
-		    <p>Hai gi&agrave un account? <a href="./index.html">Accedi</a>.</p>
+		    <p>Hai gi&agrave un account? <a href="./index.jsp">Accedi</a>.</p>
 		  </div>
 		</form>
 	

@@ -11,8 +11,10 @@
 		<style>
 		body {font-family: Arial, Helvetica, sans-serif; 
 			  background-image: url('https://assets.poetryfoundation.org/uploads/contentImages/_1092xAUTO_fit_top-center/library-header.jpg?1092');
-			  background-position: 0 0;
+			  height: 100vh;
  	 		  background-size: cover;
+ 	 		  background-position: center;
+ 	 		  
 			  }
 		
 		
