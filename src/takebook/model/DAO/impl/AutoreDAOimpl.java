@@ -67,14 +67,14 @@ public class AutoreDAOimpl implements AutoreDAO {
 	}
 
 	@Override
-	public List<Libro> getLibro(String nome, String cognome) {
+	public List<Libro> getLibro( String cognome) {
 		List<Libro> listaLibro = new ArrayList<Libro>();
 		
-		String q = "SELECT * from scrive join libro on scrive.id_libro=libro.id_libro join autore on autore.id_autore=scrive.id_autore WHERE autore.nome=? AND autore.cognome=?";
+		String q = "SELECT * from scrive join libro on scrive.id_libro=libro.id_libro join autore on autore.id_autore=scrive.id_autore WHERE autore.cognome=?";
 		try {
 			PreparedStatement ps = dbConn.getConnection().prepareStatement(q);
-			ps.setString(1, nome);
-			ps.setString(2, cognome);
+			
+			ps.setString(1, cognome);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Libro l = new Libro(rs.getInt("id_libro"),rs.getString("titolo"), rs.getString("isbn"), rs.getInt("anno_pubblicazione"),rs.getString("categoria"));

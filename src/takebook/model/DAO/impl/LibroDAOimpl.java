@@ -86,6 +86,9 @@ public class LibroDAOimpl implements LibroDAO{
 				l.setIsbn(rs.getString("isbn"));
 				l.setAnno_pubblicazione(rs.getInt("anno_pubblicazione"));
 				l.setCategoria(rs.getString("categoria"));	
+				l.setData_prenotazione(rs.getDate("data_prenotazione"));
+				l.setData_riconsegna(rs.getDate("data_riconsegna"));
+				l.setEmail_utente(rs.getString("email_utente"));
 			}
 		} catch (SQLException e) {
 			
@@ -120,6 +123,31 @@ public class LibroDAOimpl implements LibroDAO{
 		
 		
 		return listautore;
+	}
+
+
+	@Override
+	public boolean prenota(int id_libro, String email) {
+		boolean prenotato = false;
+		Libro l = this.getId(id_libro);
+		if(l.getData_prenotazione() == null) {
+			if(id_libro != 0) {
+				String q = "UPDATE LIBRO SET DATA_PRENOTAZIONE = '10-mag-2019', EMAIL_UTENTE = ?  WHERE ID_LIBRO = ?";
+				try {
+					PreparedStatement ps = dbConn.getConnection().prepareStatement(q);
+					ps.setString(1, email);
+					ps.setInt(2, id_libro);
+					ps.executeQuery();
+					prenotato = true;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}else {
+			prenotato = false;
+		}
+		
+		return prenotato;
 	}
 	
 

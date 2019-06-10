@@ -11,7 +11,7 @@ public class TakebookMain {
 		LibroDAOimpl ldi = new LibroDAOimpl();
 
 		
-		System.out.println(ldi.getAutoreLibro("Il miglio verde"));
+		
 	}
 
 }

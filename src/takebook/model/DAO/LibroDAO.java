@@ -15,4 +15,6 @@ public interface LibroDAO {
 	public Libro getId(int id_libro);
 	public List<Libro> readAll();
 	public List<Autore> getAutoreLibro(String titoloLibro);
+	public boolean prenota(int id_libro,String email);
+	
 }

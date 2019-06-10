@@ -8,16 +8,12 @@
 		<style>
 			body {
 			  margin: 0;
-			  background-image: url('https://images.pexels.com/photos/347139/pexels-photo-347139.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500') ;
-			  height: 100%;
+			  background-image: url('https://paratiepitture.it/115-large_default/carta-da-parati-con-felci-tropicali-sfondo-beige.jpg') ;
+			  
 			  background-position: center;
-  				background-repeat: no-repeat;
-  				background-size: cover;
-  	
+  			  background-repeat: no-repeat;
+  			  background-size: cover;
 			}
-			
-		
-			
 			
 			input[type=text] {
 			  width: 100%;
@@ -39,6 +35,7 @@
 			}
 				
 			ul {
+			  background-image: url('https://img.freepik.com/foto-gratuito/sfondo-tappezzeria-vintage_53876-31379.jpg?size=626&ext=jpg') ;
 			  list-style-type: none;
 			  margin: 0;
 			  padding: 0;
@@ -69,20 +66,19 @@
 	</head>
 	<body>
 		<ul>
-		  <li><a class="active" href="C:\Users\Protom\git\TakeBookProject\WebContent/VIEW//menu.jsp">Home</a></li>
+		  <li><a class="active" href="http://localhost:8080/TakeBook/VIEW/Menu.jsp">Home</a></li>
 		  <li><a href="">Contact</a></li>
 		  <li><a href="#about">About</a></li>
-		  <li><a href="http://localhost:8080/TakeBook/index.html">Logout</a></li>
+		  <li><a href="http://localhost:8080/TakeBook/index.jsp">Logout</a></li>
 		</ul>
 			<div style="margin-left:35%;margin-right:10%;padding:1px 16px;height:1000px;"  >
 	  			<h1 align="center">Ciao <%= request.getSession().getAttribute("nome") %></h1>
 	  			
-	  			<form>
+	  			<form action="http://localhost:8080/TakeBook/ServletRicerca" method="POST">
 				  <input type="radio" name="ricerca" value="libro"> Ricerca per titolo<br>
 				  <input type="radio" name="ricerca" value="autore"> Ricerca per autore<br>
 				  <input type="text" placeHolder="Cerca" name="cerca" id ="R">
 				  <button type="submit">Cerca</button>
-	
 				</form> 
 			
 		</div>
