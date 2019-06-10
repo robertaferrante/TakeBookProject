@@ -67,16 +67,13 @@
 		</ul>
 		<div style="margin-left:35%;margin-right:10%;padding:1px 16px;height:1000px;">
   			<h1 align="center">Ciao <%= request.getSession().getAttribute("nome") %></h1>
-  			<form>
   			
-			  
-			  <input type="radio" name="gender" value="libro"> Ricerca per titolo<br>
-			  <input type="radio" name="gender" value="autore"> Ricerca per autore<br>
+  			<form>
+			  <input type="radio" name="ricerca" value="libro"> Ricerca per titolo<br>
+			  <input type="radio" name="ricerca" value="autore"> Ricerca per autore<br>
 			  <input type="text" placeHolder="Cerca" name="cerca" id ="R">
 			  <button type="submit">Cerca</button>
 
-
-			  
 			</form> 
 		</div>
 	</body>

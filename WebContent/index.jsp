@@ -9,7 +9,13 @@
 		<title>Home Page</title>
 		<!--CSS-->
 		<style>
-		body {font-family: Arial, Helvetica, sans-serif; background-color: black;}
+		body {font-family: Arial, Helvetica, sans-serif; 
+			  background-image: url('https://assets.poetryfoundation.org/uploads/contentImages/_1092xAUTO_fit_top-center/library-header.jpg?1092');
+			  background-position: 0 0;
+ 	 		  background-size: cover;
+			  }
+		
+		
 		form {	left: 60%;
 				right: 60%;
 			    top: 50%;
@@ -86,10 +92,14 @@
 		    	<label for="psw"><b>Inserisci la tua password:</b></label>
 		    	<input type="password" placeHolder="Password" name="password" id="P" required>
 		        
-		    	<button type="submit">Login</button>
+		    	<button type="submit" >Login</button>
+		    	<% if(request.getAttribute("err") != null && request.getAttribute("err").equals(1)){
+					%>
+					<div style="color:red">  *Utente e password errati </div>
+				<%}%>
 		 	</div>
 		 	<br>
-			  Non sei ancora registrato? <a href="./formregistrazione.html">Clicca qui!</a>
+			  Non sei ancora registrato? <a href="./formregistrazione.jsp">Clicca qui!</a>
 		  	<div class="container" style="background-color:#f1f1f1">
 		    	<button type="reset" class="resetbtn">Reset</button>
 		    

@@ -103,9 +103,13 @@
 		</head>
 	<body>
 	
-		<form method = "post" action="./FormServlet">
+		<form method = "post" action="./ServletForm">
 		  <div class="container">
 		    <h1 align = "center" >Registrati</h1>
+		    <% if(request.getAttribute("err") != null && request.getAttribute("err").equals(2)){
+					%>
+					<div> <p  style="color:#FF0000" > *Utente gi&agrave  presente</p> </div>
+				<%}%>
 		    <p align = "center"> Inserisci i tuoi dati nei seguenti campi</p>
 		    <hr>
 		
