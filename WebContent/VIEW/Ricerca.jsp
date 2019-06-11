@@ -8,38 +8,111 @@
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 			<title>Ricerca</title>
+			<style>
+				body {
+				  margin: 0;
+				  background-position: center;
+	  			  background-repeat: no-repeat;
+	  			  background-size: cover;
+				}
+				
+				
+				button {
+				  background-color: #4CAF50;
+				  color: white;
+				  padding: 14px 20px;
+				  margin: 8px 0;
+				  border: none;
+				  cursor: pointer;
+				  width: 100%;
+				}
+					
+				ul {
+				  background-image: url('https://img.freepik.com/foto-gratuito/sfondo-tappezzeria-vintage_53876-31379.jpg?size=626&ext=jpg') ;
+				  list-style-type: none;
+				  margin: 0;
+				  padding: 0;
+				  width: 25%;
+				  background-color: #f1f1f1;
+				  position: fixed;
+				  height: 100%;
+				  overflow: auto;
+				}
+				
+				li a {
+				  display: block;
+				  color: #000;
+				  padding: 8px 16px;
+				  text-decoration: none;
+				}
+				
+				li a.active {
+				  background-color: #4CAF50;
+				  color: white;
+				}
+				
+				li a:hover:not(.active) {
+				  background-color: #555;
+				  color: white;
+				}
+				
+				table {
+				  font-family: arial, sans-serif;
+				  width: 100%;
+				  border-radius: 20px 20px 20px 20px ;
+				  border: 4px solid #dddddd;
+				}
+				
+				th {
+				  text-align: left;
+				  padding: 8px;
+				  font-family: bold;
+				}
+				
+				tr:nth-child(even) {
+				  background-color: #dddddd;
+				}
+			</style>
 		</head>
 		<body>
-				
-		<form action="./ServletPrenota">
-         <table border="3">   
-         	<tr>
-            		<td> Prenota </td>
-            		<td> Titolo </td>
-            		<td> Anno </td>
-            		<td> ISBN </td>
-            		<td> Categoria </td>
-            </tr>
-            
-	            <c:forEach var="libro" items="${listaLibri}">
-	            	<tr>
-	       			 	<td><input type="radio" name="libro" value="${libro.id_libro}"></td>
-	          			<td>${libro.titolo}</td>
-	          			<td>${libro.anno_pubblicazione}</td>
-	          			<td>${libro.isbn}</td>
-	          			<td>${libro.categoria}</td>
-	      			 </tr>
-	   			</c:forEach>
-	
-        </table>
-        <button type="submit">Prenota</button>
-        </form>
-        <div> <% if(request.getAttribute("prenotato") != null && (boolean)request.getAttribute("prenotato")==true){
-					%>
-					<div> <p  style="color:#FF0000" > *La prenotazione e avvenuta con successo</p> </div>
-				<%} else if(request.getAttribute("prenotato") != null && (boolean)request.getAttribute("prenotato")==false) {%> 
-					<div><p  style="color:#FF0000" > *Questo libro non e al momento disponibile</p></div>
-					<%} %>
-				
+		
+			<ul>
+			  <li><a class="active" href="http://localhost:8080/TakeBook/VIEW/Menu.jsp">Home</a></li>
+			  <li><a href="http://localhost:8080/TakeBook/letueprenotazioni.html">Le tue prenotazioni</a></li>
+			  <li><a href="#about">About</a></li>
+			  <li><a href="http://localhost:8080/TakeBook/index.jsp">Logout</a></li>
+			</ul>
+			<div style="margin-left:35%;margin-right:10%;padding:1px 16px;height:1000px;"  >		
+				<form action="./ServletPrenota">
+	         	<table>   
+		         	<tr>
+		            		<th> Prenota </th>
+		            		<th> Titolo </th>
+		            		<th> Anno </th>
+		            		<th> ISBN </th>
+		            		<th> Categoria </th>
+		            </tr>
+	            
+		            <c:forEach var="libro" items="${listaLibri}">
+		            	<tr>
+		       			 	<td><input type="radio" name="libro" value="${libro.id_libro}"></td>
+		          			<td>${libro.titolo}</td>
+		          			<td>${libro.anno_pubblicazione}</td>
+		          			<td>${libro.isbn}</td>
+		          			<td>${libro.categoria}</td>
+		      			 </tr>
+		   			</c:forEach>
+		        </table>
+		        <button type="submit">Prenota</button>
+		        </form>
+		        <div> <% if(request.getAttribute("prenotato") != null && (boolean)request.getAttribute("prenotato")==true){
+							%>
+							<div> <p  style="color:#FF0000" > *La prenotazione e avvenuta con successo</p> </div>
+						<%} else if(request.getAttribute("prenotato") != null && (boolean)request.getAttribute("prenotato")==false) {%> 
+							<div><p  style="color:#FF0000" > *Questo libro non e al momento disponibile</p></div>
+							<%} %>
+				</div>		
+			</div>
+		
 		</body>
 	</html>

@@ -149,6 +149,14 @@ public class LibroDAOimpl implements LibroDAO{
 		
 		return prenotato;
 	}
+
+
+	@Override
+	public List<Libro> getPrenotati(String email) {
+		String q= "SELECT * FROM ";
+		List<Libro> lista_libri = new ArrayList<Libro>();
+		return null;
+	}
 	
 
 }
