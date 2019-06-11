@@ -1,5 +1,7 @@
 package takebook.model;
 
+import java.util.Date;
+
 public class Libro {
 	//attributi
 	private int id_libro;
@@ -7,6 +9,9 @@ public class Libro {
 	private String isbn;
 	private int anno_pubblicazione;
     private String categoria;
+    private Date data_prenotazione;
+    private Date data_riconsegna;
+    private String email_utente;
    
     //costruttore vuoto
      public Libro() {
@@ -53,6 +58,24 @@ public class Libro {
 	}
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
+	}
+	public Date getData_prenotazione() {
+		return data_prenotazione;
+	}
+	public void setData_prenotazione(Date data_prenotazione) {
+		this.data_prenotazione=data_prenotazione;
+	}
+	public Date getData_riconsegna() {
+		return data_riconsegna;
+	}
+	public void setData_riconsegna(Date data_riconsegna) {
+		this.data_riconsegna=data_riconsegna;
+	}
+	public String getEmail_utente() {
+		return email_utente;
+	}
+	public void setEmail_utente(String email_utente) {
+		this.email_utente=email_utente;
 	}
 	
 	@Override

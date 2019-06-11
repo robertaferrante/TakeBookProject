@@ -13,6 +13,6 @@ public interface AutoreDAO {
 	//public void delete();
 	public ArrayList<Autore>  readAll();
 	public Autore read(String nome, String cognome);
-	public List<Libro> getLibro(String nome, String cognome);
+	public List<Libro> getLibro(String cognome);
 
  }
