@@ -8,8 +8,8 @@
 		<style>
 			body {
 			  margin: 0;
-			  background-image: url('https://images.pexels.com/photos/347139/pexels-photo-347139.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500') ;
-			  height: 100%;
+			  background-image: url('https://image.freepik.com/fotos-gratis/livro-aberto-no-fundo-branco_39526-23.jpg') ;
+			  height: 40%;
 			  background-position: center;
   				background-repeat: no-repeat;
   				background-size: cover;
@@ -26,6 +26,7 @@
 			  display: inline-block;
 			  border: 1px solid #ccc;
 			  box-sizing: border-box;
+		
 			}
 			
 			button {
@@ -42,10 +43,10 @@
 			  list-style-type: none;
 			  margin: 0;
 			  padding: 0;
-			  width: 25%;
+			  width: 15%;
 			  background-color: #f1f1f1;
 			  position: fixed;
-			  height: 100%;
+			  height: 30%;
 			  overflow: auto;
 			}
 			
@@ -74,8 +75,9 @@
 		  <li><a href="#about">About</a></li>
 		  <li><a href="http://localhost:8080/TakeBook/index.html">Logout</a></li>
 		</ul>
-			<div style="margin-left:35%;margin-right:10%;padding:1px 16px;height:1000px;"  >
+			<div style="margin-left:20%;margin-right:15%;padding:1px 16px;height:1000px; "  >
 	  			<h1 align="center">Ciao <%= request.getSession().getAttribute("nome") %></h1>
+	  			
 	  			
 	  			<form>
 				  <input type="radio" name="ricerca" value="libro"> Ricerca per titolo<br>
