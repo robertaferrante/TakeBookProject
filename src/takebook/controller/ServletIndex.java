@@ -48,7 +48,7 @@ import takebook.model.DAO.impl.UtenteDAOimpl;
 
 		if(utDAO.login(email, pass)==null){  
 	        request.setAttribute("err", 1);
-	        RequestDispatcher rd = request.getRequestDispatcher("./index.jsp");  
+	        RequestDispatcher rd = request.getRequestDispatcher("./VIEW/index.jsp");  
 	        rd.include(request,response);  
 	    }  else {
 			Utente u = utDAO.login(email, pass);

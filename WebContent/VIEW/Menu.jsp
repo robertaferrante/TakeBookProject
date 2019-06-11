@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ 
+<% if(session.getAttribute("nome") == null )
+	{
+	
+		RequestDispatcher rd = request.getRequestDispatcher("./index.jsp");
+		rd.forward(request, response);
+	}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -8,10 +16,11 @@
 		<style>
 			body {
 			  margin: 0;
-			  background-image: url('https://paratiepitture.it/115-large_default/carta-da-parati-con-felci-tropicali-sfondo-beige.jpg') ;
+			  background-image: url('http://localhost:8080/TakeBook/images/libroimmagine.jpg') ;
 			  background-position: center;
   			  background-repeat: no-repeat;
   			  background-size: cover;
+  			  height: 40%;
 			}
 			
 			input[type=text] {
@@ -21,6 +30,8 @@
 			  display: inline-block;
 			  border: 1px solid #ccc;
 			  box-sizing: border-box;
+			  text-transform:capitalize; 
+			  
 			}
 			
 			button {
@@ -34,14 +45,13 @@
 			}
 				
 			ul {
-			  background-image: url('https://img.freepik.com/foto-gratuito/sfondo-tappezzeria-vintage_53876-31379.jpg?size=626&ext=jpg') ;
 			  list-style-type: none;
 			  margin: 0;
 			  padding: 0;
-			  width: 25%;
+			  width: 15%;
 			  background-color: #f1f1f1;
 			  position: fixed;
-			  height: 100%;
+			  height: 30%;
 			  overflow: auto;
 			}
 			
@@ -66,20 +76,21 @@
 	<body>
 		<ul>
 		  <li><a class="active" href="http://localhost:8080/TakeBook/VIEW/Menu.jsp">Home</a></li>
-		  <li><a href="http://localhost:8080/TakeBook/letueprenotazioni.html">Le tue prenotazioni</a></li>
-		  <li><a href="#about">About</a></li>
-		  <li><a href="http://localhost:8080/TakeBook/index.jsp">Logout</a></li>
+		  <li><a href="http://localhost:8080/TakeBook/ServletLetueprenotazioni">Le tue prenotazioni</a></li>
+		  <li><a href="http://localhost:8080/TakeBook/ServletAutori">Autori</a></li>
+		  <li><a href="http://localhost:8080/TakeBook/ServletLibri">Libri</a></li>
+		  <li><a href="http://localhost:8080/TakeBook/ServletLogout">Logout</a></li>
 		</ul>
-			<div style="margin-left:35%;margin-right:10%;padding:1px 16px;height:1000px;"  >
+			<div style="margin-left:20%;margin-right:15%;padding:1px 16px;height:1000px;"  >
 	  			<h1 align="center">Ciao <%= request.getSession().getAttribute("nome") %></h1>
 	  			
 	  			<form action="http://localhost:8080/TakeBook/ServletRicerca" method="POST">
-				  <input type="radio" name="ricerca" value="libro"> Ricerca per titolo<br>
-				  <input type="radio" name="ricerca" value="autore"> Ricerca per autore<br>
+				  <input type="radio" name="ricerca" value="libro" required> Ricerca per titolo<br>
+				  <input type="radio" name="ricerca" value="autore"> Ricerca per autore (Cognome)<br>
+				  <input type="radio" name="ricerca" value="categoria"> Ricerca per categoria<br>
 				  <input type="text" placeHolder="Cerca" name="cerca" id ="R">
 				  <button type="submit">Cerca</button>
 				</form> 
-			
 		</div>
 	</body>
 </html>

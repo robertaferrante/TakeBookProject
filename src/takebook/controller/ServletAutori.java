@@ -12,62 +12,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import takebook.checkLogin.CheckLogin;
-import takebook.model.Libro;
+import takebook.model.Autore;
 import takebook.model.DAO.AutoreDAO;
-import takebook.model.DAO.LibroDAO;
 import takebook.model.DAO.impl.AutoreDAOimpl;
-import takebook.model.DAO.impl.LibroDAOimpl;
 
 /**
- * Servlet implementation class ServletRicerca
+ * Servlet implementation class ServletAutori
  */
-@WebServlet("/ServletRicerca")
-public class ServletRicerca extends HttpServlet {
+@WebServlet("/ServletAutori")
+public class ServletAutori extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static LibroDAO libDAO;
 	private static AutoreDAO autDAO;
-       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletRicerca() {
+    public ServletAutori() {
         super();
+        // TODO Auto-generated constructor stub
     }
-
+    
     public void init(ServletConfig config) throws ServletException{
-    	ServletRicerca.libDAO = new LibroDAOimpl();
-    	ServletRicerca.autDAO = new AutoreDAOimpl();
+    	ServletAutori.autDAO = new AutoreDAOimpl();
 
     }
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CheckLogin.checkLogin(request, response);
-
-		String testo = request.getParameter("cerca");
-		String ricerca = request.getParameter("ricerca");
-
-	
-		if(ricerca.equals("libro")) {
-			ArrayList <Libro> listaLibri = (ArrayList<Libro>) libDAO.read(testo);
-			request.setAttribute("listaLibri", listaLibri);
-			if (listaLibri.size()==0) {
-				request.setAttribute("notfound", "");
-
-			}
-
-		}
-		if(ricerca.equals("autore")) {
-			request.setAttribute("listaLibri", autDAO.getLibro(testo));
-			
-		}
-		if(ricerca.equals("categoria")) {
-			request.setAttribute("listaLibri", libDAO.getLibroByCategoria(testo));
-			
-		}
-		RequestDispatcher d = request.getRequestDispatcher("./VIEW/Ricerca.jsp");
-		d.forward(request, response);
+		ArrayList<Autore> listaAutori = autDAO.readAll();
+		request.setAttribute("listaAutori", listaAutori);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("./VIEW/Autori.jsp");
+		rd.forward(request, response);
+		
 	}
 
 	/**

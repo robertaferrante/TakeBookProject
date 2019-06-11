@@ -11,6 +11,8 @@ public class TakebookMain {
 		LibroDAOimpl ldi = new LibroDAOimpl();
 
 		
+		System.out.println(ldi.getPrenotati("d.ascione@gmail.com"));
+		
 		
 	}
 

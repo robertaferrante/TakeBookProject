@@ -110,7 +110,7 @@
 		</head>
 	<body>
 	
-		<form method = "post" action="./ServletForm">
+		<form method = "post" action="http://localhost:8080/TakeBook/ServletForm">
 		  <div class="container">
 		    <h1 align = "center" >Registrati</h1>
 		    <% if(request.getAttribute("err") != null && request.getAttribute("err").equals(2)){
@@ -141,7 +141,6 @@
 		    <label for="pswrepeat"><b>Ripeti password</b></label>
 		    <input type="password" placeholder="Ripeti Password" name="pswrepeat" required>
 		    <hr>
-		    <p>Prima di creare il tuo account dai un'occhiata al <a href="#">Terms & Privacy</a>.</p>
 		
 		    <button type="submit" onClick="return passTest();">Registrati</button>
 		  </div>

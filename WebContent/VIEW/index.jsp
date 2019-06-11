@@ -10,7 +10,7 @@
 		<!--CSS-->
 		<style>
 		body {font-family: Arial, Helvetica, sans-serif; 
-			  background-image: url('https://assets.poetryfoundation.org/uploads/contentImages/_1092xAUTO_fit_top-center/library-header.jpg?1092');
+			  background-image: url('http://localhost:8080/TakeBook/images/library-header.jpg');
 			  height: 100vh;
  	 		  background-size: cover;
  	 		  background-position: center;
@@ -82,9 +82,9 @@
 	<body>
 		<font color="white" face="Bodoni"><h2 align="center" >TakeBook</h2></font>
 	
-		<form method ="post" action="./ServletIndex" >
+		<form method ="post" action="http://localhost:8080/TakeBook/ServletIndex" >
 		  	<div class="imgcontainer">
-		    	<img src="images/avatar.png" alt="Avatar" class="avatar">
+		    	<img src="http://localhost:8080/TakeBook/images/avatar.png" alt="Avatar" class="avatar">
 		  	</div>
 		
 		  	<div class="container">
@@ -101,7 +101,7 @@
 				<%}%>
 		 	</div>
 		 	<br>
-			  Non sei ancora registrato? <a href="./formregistrazione.jsp">Clicca qui!</a>
+			  Non sei ancora registrato? <a href="http://localhost:8080/TakeBook/VIEW/formregistrazione.jsp">Clicca qui!</a>
 		  	<div class="container" style="background-color:#f1f1f1">
 		    	<button type="reset" class="resetbtn">Reset</button>
 		    

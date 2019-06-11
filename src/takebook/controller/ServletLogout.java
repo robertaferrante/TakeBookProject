@@ -9,52 +9,41 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import takebook.checkLogin.CheckLogin;
-import takebook.model.DAO.LibroDAO;
-import takebook.model.DAO.impl.LibroDAOimpl;
-
-
+import takebook.model.DAO.UtenteDAO;
+import takebook.model.DAO.impl.UtenteDAOimpl;
 
 /**
- * Servlet implementation class ServletPrenota
+ * Servlet implementation class ServletLogout
  */
-@WebServlet("/ServletPrenota")
-public class ServletPrenota extends HttpServlet {
+@WebServlet("/ServletLogout")
+public class ServletLogout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static LibroDAO libDAO;
+	private static UtenteDAO utDAO;
+	
+	public void init(ServletConfig config) throws ServletException{
+	    	ServletLogout.utDAO = new UtenteDAOimpl();
+	    	
+	    }
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletPrenota() {
+    public ServletLogout() {
         super();
-      
-    }
-    
-    public void init(ServletConfig config) throws ServletException{
-    	ServletPrenota.libDAO = new LibroDAOimpl();
-
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CheckLogin.checkLogin(request, response);
+		HttpSession session = request.getSession();
+		session.invalidate();
+		RequestDispatcher rd = request.getRequestDispatcher("./VIEW/index.jsp");  
+        rd.include(request,response);  
 
-		int id_libro = Integer.parseInt(request.getParameter("libro"));
-		String email = (String) request.getSession().getAttribute("email");
-		
-		request.setAttribute("prenotato", libDAO.prenota(id_libro, email));
-		RequestDispatcher d = request.getRequestDispatcher("./VIEW/Ricerca.jsp");
-		d.forward(request, response);
-		
-		
-		
-		
-		
-		
 	}
 
 	/**

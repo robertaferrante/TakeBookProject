@@ -68,9 +68,10 @@ public class AutoreDAOimpl implements AutoreDAO {
 
 	@Override
 	public List<Libro> getLibro( String cognome) {
+		
 		List<Libro> listaLibro = new ArrayList<Libro>();
 		
-		String q = "SELECT * from scrive join libro on scrive.id_libro=libro.id_libro join autore on autore.id_autore=scrive.id_autore WHERE autore.cognome=?";
+		String q = "SELECT * from scrive join libro on scrive.id_libro=libro.id_libro join autore on autore.id_autore=scrive.id_autore WHERE lower(autore.cognome)=lower(?)";
 		try {
 			PreparedStatement ps = dbConn.getConnection().prepareStatement(q);
 			
@@ -89,4 +90,26 @@ public class AutoreDAOimpl implements AutoreDAO {
 		
 		return listaLibro;
 	}
+
+	@Override
+	public ArrayList<Libro> getLibriByAutore(int id_autore) {
+		ArrayList<Libro> listaLibri = new ArrayList<Libro>();
+		String q ="SELECT LIBRO.ID_LIBRO, LIBRO.TITOLO, LIBRO.ISBN, LIBRO.ANNO_PUBBLICAZIONE, LIBRO.CATEGORIA,LIBRO.DATA_PRENOTAZIONE,LIBRO.DATA_RICONSEGNA,LIBRO.EMAIL_UTENTE FROM LIBRO JOIN SCRIVE ON libro.id_libro = scrive.id_libro JOIN AUTORE ON autore.id_autore=scrive.id_autore WHERE autore.id_autore=?";
+		try {
+			PreparedStatement ps = dbConn.getConnection().prepareStatement(q);
+			
+			ps.setInt(1, id_autore);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Libro l = new Libro(rs.getInt("id_libro"),rs.getString("titolo"), rs.getString("isbn"), rs.getInt("anno_pubblicazione"),rs.getString("categoria"));
+				listaLibri.add(l);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return listaLibri;
+	}
+	
+	
 }
