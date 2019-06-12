@@ -1,7 +1,8 @@
 package takebook.model.DAO;
 
 import takebook.model.Utente;
-
+//Interfaccia che rispetta il pattern DAO e che contiene i principali metodi CRUD  
+//Create Read Update Delete; 
 public interface UtenteDAO {
 
 	public void save(Utente u);

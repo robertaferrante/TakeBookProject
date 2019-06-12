@@ -26,19 +26,18 @@ public class ServletAutori extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletAutori() {
+	public ServletAutori() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     public void init(ServletConfig config) throws ServletException{
     	ServletAutori.autDAO = new AutoreDAOimpl();
-
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CheckLogin.checkLogin(request, response);
 		ArrayList<Autore> listaAutori = autDAO.readAll();
@@ -46,14 +45,13 @@ public class ServletAutori extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("./VIEW/Autori.jsp");
 		rd.forward(request, response);
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

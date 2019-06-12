@@ -19,47 +19,42 @@ import takebook.model.DAO.impl.AutoreDAOimpl;
 /**
  * Servlet implementation class ServletLibriByAutore
  */
+
 @WebServlet("/ServletLibriByAutore")
 public class ServletLibriByAutore extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static AutoreDAO autDAO;
-
-       
+  
     /**
      * @see HttpServlet#HttpServlet()
      */
+	
     public ServletLibriByAutore() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     public void init(ServletConfig config) throws ServletException{
     	ServletLibriByAutore.autDAO = new AutoreDAOimpl();
-
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CheckLogin.checkLogin(request, response);
-
 		int id_autore = Integer.parseInt(request.getParameter("autore"));
 		ArrayList<Libro> listaLibri =  autDAO.getLibriByAutore(id_autore);
-		
 		request.setAttribute("listaLibri", listaLibri);
 		RequestDispatcher rd = request.getRequestDispatcher("./VIEW/Ricerca.jsp");
 		rd.forward(request, response);
-		
-
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

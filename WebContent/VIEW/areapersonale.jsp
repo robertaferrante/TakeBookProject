@@ -23,7 +23,7 @@
   			  height: 40%;
 			}
 			
-			input[type=text] {
+			input[type="password"] {
 			  width: 70%;
 			  padding: 12px 20px;
 			  margin: 8px 0;
@@ -42,13 +42,13 @@
 			  border: none;
 			  cursor: pointer;
 			  width: 30%;
-			  align:center;
+			  align:right;
 			  
 			}
 				
 			ul {
 			  list-style-type: none;
-			  margin-top: 0.1%;
+			  margin-top: -2%;
 			  padding: 0;
 			  width: 15%;
 			  background-color: #f1f1f1;
@@ -79,19 +79,29 @@
   				border-radius: 50%;
   				margin-right: 2%;
   				align:center;
-  				
-  				
 			}
+			
+			table {
+				  font-family: arial, sans-serif;
+				  width: 60%;
+				  height:25%;
+				  border-radius: 20px 20px 20px 20px ;
+				  border: 4px solid #4CAF50;
+				  
+				}
+				
+				.eliminazione {
+			 	 background-color: #f44336;
+				}
 			
 		</style>
 	</head>
 	<body>
 		
 		<ul>
-			<li><img align="middle" style="margin-left:33%; margin-top:10%" src="http://localhost:8080/TakeBook/images/img_avatar.png" alt="Avatar" class="avatar"></li>
-		
+		  <li><img align="middle" style="margin-left:33%; margin-top:10%" src="http://localhost:8080/TakeBook/images/img_avatar.png" alt="Avatar" class="avatar"></li>
 		<br><br>
-		<li><a href="http://localhost:8080/TakeBook/VIEW/areapersonale.jsp"class="active">My Area</a></li>
+		  <li><a href="http://localhost:8080/TakeBook/VIEW/areapersonale.jsp"class="active">My Area</a></li>
 		  <li><a href="http://localhost:8080/TakeBook/VIEW/Menu.jsp">Home</a></li>
 		  <li><a href="http://localhost:8080/TakeBook/ServletLetueprenotazioni">Le tue prenotazioni</a></li>
 		  <li><a href="http://localhost:8080/TakeBook/ServletAutori">Autori</a></li>
@@ -100,34 +110,55 @@
 		</ul>
 	  				
 	  				
-	  			
-			<div style="margin-left:20%;margin-right:15%;padding:1px 16px;height:1000px;"  >
-	  			<h1 align="center">Ciao <%= request.getSession().getAttribute("nome") %></h1>
-	  			
-	  			
-	  			<div style="margin-left:30%;margin-right:15%;margin-top:10%;"  >
-	  			
-				 <h2> Nome: <%= request.getSession().getAttribute("nome") %> <br>
-				   Cognome: <%= request.getSession().getAttribute("cognome") %><br>
-				   Email: <%= request.getSession().getAttribute("email") %><br>
-				   Indirizzo: <%= request.getSession().getAttribute("indirizzo") %><br>
-				   Citta: <%= request.getSession().getAttribute("citta") %><br>
-				   
-				</h2>
-				
-				<form action="http://localhost:8080/TakeBook/ServletEliminaAccount" method="post">
-				<button  type="submit" name="elimina" >Elimina Account</button>
-				</form>
-				
+  		<h1 style="margin-left:40%">Ciao <%= request.getSession().getAttribute("nome") %></h1>	
+		<div style="margin-left:30%;margin-right:15%;padding:1px 16px;height:1000px;margin-top:4%">
+		
+		<table >
+		  <tr>
+		    <th>Nome:</th>
+		    <td><%= request.getSession().getAttribute("nome") %></td>
+		  </tr>
+		  <tr>
+		    <th>Cognome:</th>
+		    <td><%= request.getSession().getAttribute("cognome") %></td>
+		  </tr>
+		  <tr>
+		    <th>Email:</th>
+		    <td><%= request.getSession().getAttribute("email") %></td>
+		  </tr>
+		  <tr>
+		    <th>Indrizzo:</th>
+		    <td><%= request.getSession().getAttribute("indirizzo") %></td>
+		  </tr>
+		   <tr>
+		    <th>Citta:</th>
+		    <td><%= request.getSession().getAttribute("citta") %></td>
+		  </tr>
+		</table>
+	
 				<form action="http://localhost:8080/TakeBook/ServletCambiaPassword" method="post">
-				
+				<br>
+				<br>
+				<br>
+				<br>
 		    	<b>Nuova password</b><br>
 		    	<input type="password" placeholder="Inserisci la tua nuova Password" name="pswnew" required><br>
 		    	
 				<button  type="submit" >Cambia password</button>
 				</form>
-					
-				</div>
+				<div> 	
+					<% if(request.getAttribute("cambiato") != null && (boolean)request.getAttribute("cambiato")==true){
+					%> 
+						<div><h3 style="color:#FF0000;">  *La modifica &egrave avvenuta con successo</h3> </div>
+					<%} %>
+					</div>
+				
+				
+				<form action="http://localhost:8080/TakeBook/ServletEliminaAccount" method="post">
+				<button  type="submit" class="eliminazione" name="elimina"style="margin-left:95%; margin-top:-4%" >Elimina Account</button>
+				</form>	
+				
+				
 		</div>
 		
 	</body>

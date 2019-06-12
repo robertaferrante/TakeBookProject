@@ -25,32 +25,32 @@ import takebook.model.DAO.impl.UtenteDAOimpl;
 		private static final long serialVersionUID = 1L;
 		private static UtenteDAO utDAO;
 	
-	public void init(ServletConfig config) throws ServletException{
+		public void init(ServletConfig config) throws ServletException{
 	    	ServletIndex.utDAO = new UtenteDAOimpl();
-	    	
 	    }
        
     /**
      * @see HttpServlet#HttpServlet()
      */
+		
     public ServletIndex() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String pass = request.getParameter("password");
 		HttpSession session = request.getSession();
 
 		if(utDAO.login(email, pass)==null){  
-	        request.setAttribute("err", 1);
+			request.setAttribute("err", 1);
 	        RequestDispatcher rd = request.getRequestDispatcher("./VIEW/index.jsp");  
 	        rd.include(request,response);  
-	    }  else {
+		} else {
 			Utente u = utDAO.login(email, pass);
 			session.setAttribute("email" ,email);
 			session.setAttribute("nome", u.getNome());
@@ -58,10 +58,6 @@ import takebook.model.DAO.impl.UtenteDAOimpl;
 			session.setAttribute("indirizzo", u.getIndirizzo());
 			session.setAttribute("citta", u.getCitta());
 
-			
-			
-			
-			
 			RequestDispatcher d = request.getRequestDispatcher("./VIEW/Menu.jsp");
 			d.forward(request, response);
 	    }
@@ -70,6 +66,7 @@ import takebook.model.DAO.impl.UtenteDAOimpl;
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

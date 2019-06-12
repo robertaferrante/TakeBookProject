@@ -10,29 +10,19 @@ import javax.servlet.http.HttpSession;
 
 public class CheckLogin {
 	
-
+	/**CheckLogin impedisce l'accesso se il login non viene effettuato. Controlla per ogni jsp e servlet se 
+	  la sessione è null. Se la sessione è null ritorna all'index per richiedere il logIn */
 	
 	public static void checkLogin(HttpServletRequest request,HttpServletResponse response) {
-
-		if(request.getSession().getAttribute("nome") == null )
-		{
-		
+		if(request.getSession().getAttribute("nome") == null ){
 			RequestDispatcher rd = request.getRequestDispatcher("./VIEW/index.jsp");
-		
-				try {
-					rd.forward(request, response);
-				} catch (ServletException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		
-			
-		}
-
-		
+			try {
+				rd.forward(request, response);
+			} catch (ServletException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}				
+		}	
 	}
-
 }

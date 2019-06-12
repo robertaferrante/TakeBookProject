@@ -80,7 +80,6 @@
   				margin-right: 2%;
   				align:center;
   				
-  				
 			}
 			
 		</style>

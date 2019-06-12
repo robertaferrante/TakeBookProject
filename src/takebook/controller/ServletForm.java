@@ -25,22 +25,22 @@ public class ServletForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static UtenteDAO utDAO;
     
-	
 	 public void init(ServletConfig config) throws ServletException{
 	    	ServletForm.utDAO = new UtenteDAOimpl();
-	    	
 	    }
+	 
     /**
      * @see HttpServlet#HttpServlet()
      */
+	 
     public ServletForm() {
         super();
-
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
@@ -51,12 +51,11 @@ public class ServletForm extends HttpServlet {
 		Utente u = new Utente(email, password, nome, cognome, indirizzo, citta);
 		HttpSession session = request.getSession();
 
-		
 		if(utDAO.read(email)!=null){
 	        request.setAttribute("err", 2);
 	        RequestDispatcher rd = request.getRequestDispatcher("./formregistrazione.jsp");  
 	        rd.include(request,response);  
-	    }  else {
+	    } else {
 			utDAO.save(u);
 			session.setAttribute("email" ,u.getEmail());
 			session.setAttribute("psw" ,u.getPassword());
@@ -66,14 +65,14 @@ public class ServletForm extends HttpServlet {
 			session.setAttribute("citta", u.getCitta());
 			RequestDispatcher d = request.getRequestDispatcher("./VIEW/Menu.jsp");
 			d.forward(request, response);
-		    }
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

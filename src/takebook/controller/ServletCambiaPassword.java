@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import takebook.checkLogin.CheckLogin;
 import takebook.model.DAO.UtenteDAO;
 import takebook.model.DAO.impl.UtenteDAOimpl;
 
@@ -25,39 +26,34 @@ public class ServletCambiaPassword extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	
     public ServletCambiaPassword() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     public void init(ServletConfig config) throws ServletException{
-    	ServletCambiaPassword.utDAO = new UtenteDAOimpl();
-    	
+    	ServletCambiaPassword.utDAO = new UtenteDAOimpl();	
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		CheckLogin.checkLogin(request, response);
 		HttpSession session = request.getSession();
-		
 		String email = (String) session.getAttribute("email");
 		String pswnew = request.getParameter("pswnew");
-		
-		
-			request.setAttribute("nuovapassword", utDAO.updatePassword(pswnew, email));
-			RequestDispatcher rd = request.getRequestDispatcher("./VIEW/areapersonale.jsp");  
-	        rd.forward(request,response);  
-		
-		
-		
+		boolean cambiato = utDAO.updatePassword(pswnew, email);
+		request.setAttribute("nuovapassword", utDAO.updatePassword(pswnew, email));
+		request.setAttribute("cambiato", cambiato);
+		RequestDispatcher rd = request.getRequestDispatcher("./VIEW/areapersonale.jsp");  
+	    rd.forward(request,response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

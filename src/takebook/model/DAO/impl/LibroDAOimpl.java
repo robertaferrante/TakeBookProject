@@ -12,24 +12,21 @@ import takebook.model.Autore;
 import takebook.model.Libro;
 import takebook.model.DAO.LibroDAO;
 
-
+//Implementazione dell'interfaccia DAO che estende i suoi metodi alla classe 
 
 public class LibroDAOimpl implements LibroDAO{
 	private DBConnection dbConn; 
 	
+//Nel costruttore richiamiamo la connessione
 	public LibroDAOimpl() {	
 		dbConn = DBConnection.getDBConnection();
-		
 	}
 	
-
 	@Override
 	public List<Libro> read(String titolo) {
 		String q="SELECT * FROM LIBRO WHERE lower(TITOLO) LIKE lower(?)";
-		
 		List<Libro> lista_libri = new ArrayList<Libro>();
 		try {
-			
 			PreparedStatement ps= dbConn.getConnection().prepareStatement(q);
 			ps.setString(1,"%"+titolo+"%");
 			ResultSet rs= ps.executeQuery();
@@ -37,9 +34,7 @@ public class LibroDAOimpl implements LibroDAO{
 				Libro l = new Libro(rs.getInt("id_libro"),rs.getString("titolo"), rs.getString("isbn"), rs.getInt("anno_pubblicazione"),rs.getString("categoria"));
 				lista_libri.add(l);
 			}
-			
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		}
 		return lista_libri;
@@ -47,26 +42,21 @@ public class LibroDAOimpl implements LibroDAO{
 
 	@Override
 	public ArrayList<Libro> readAll() {
-		
 		String q= "SELECT* FROM LIBRO";
 		ArrayList<Libro> lista_libri = new ArrayList<Libro>();
 		try {
 			PreparedStatement ps= dbConn.getConnection().prepareStatement(q);
 			ResultSet rs= ps.executeQuery();
 			while(rs.next()==true) {
-				
 				Libro l=new Libro();
 				l.setId_libro(rs.getInt("id_libro"));
 				l.setTitolo(rs.getString("titolo"));
 				l.setIsbn(rs.getString("isbn"));
 				l.setAnno_pubblicazione(rs.getInt("anno_pubblicazione"));
 				l.setCategoria(rs.getString("categoria"));
-				
 				lista_libri.add(l);
 			}
-			
-		}catch(SQLException e) {
-			
+		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return lista_libri;
@@ -91,18 +81,14 @@ public class LibroDAOimpl implements LibroDAO{
 				l.setEmail_utente(rs.getString("email_utente"));
 			}
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		}
 		return l;
-		
 	}
-
 
 	@Override
 	public List<Autore> getAutoreLibro(String titololibro) {
 		List<Autore> listautore = new ArrayList<Autore>();
-		
 		String q = "SELECT autore.nome,autore.cognome,autore.nazione from scrive join libro on scrive.id_libro=libro.id_libro join autore on autore.id_autore=scrive.id_autore WHERE libro.titolo=?";
 		try {
 			PreparedStatement ps = dbConn.getConnection().prepareStatement(q);
@@ -115,16 +101,11 @@ public class LibroDAOimpl implements LibroDAO{
 				a.setNazione(rs.getNString("nazione"));
 				listautore.add(a);
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
 		return listautore;
 	}
-
 
 	@Override
 	public boolean prenota(int id_libro, String email) {
@@ -143,13 +124,11 @@ public class LibroDAOimpl implements LibroDAO{
 					e.printStackTrace();
 				}
 			}
-		}else {
+		} else {
 			prenotato = false;
 		}
-		
 		return prenotato;
 	}
-
 
 	@Override
 	public List<Libro> getPrenotati(String email) {
@@ -170,14 +149,12 @@ public class LibroDAOimpl implements LibroDAO{
 				l.setData_riconsegna(rs.getDate("data_riconsegna"));
 				l.setEmail_utente(rs.getString("email_utente"));
 				lista_libri.add(l);
-				
 			}
 			rs.close();
 			ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	
 		return lista_libri;
 	}
 
@@ -203,16 +180,13 @@ public class LibroDAOimpl implements LibroDAO{
 		else {
 			restituito=false;
 		}
-		
 		return restituito;
 	}
 
 
 	@Override
 	public ArrayList<Libro> getLibroByCategoria(String categoria) {
-		//categoria = categoria.toLowerCase();
 		String q="SELECT * FROM LIBRO WHERE lower(categoria) = lower(?)";
-		
 		ArrayList<Libro> lista_libri = new ArrayList<Libro>();
 		try {
 			PreparedStatement ps= dbConn.getConnection().prepareStatement(q);
@@ -222,12 +196,28 @@ public class LibroDAOimpl implements LibroDAO{
 				Libro l = new Libro(rs.getInt("id_libro"),rs.getString("titolo"), rs.getString("isbn"), rs.getInt("anno_pubblicazione"),rs.getString("categoria"));
 				lista_libri.add(l);
 			}
-			
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		}
 		return lista_libri;
+	}
+
+
+	@Override
+	public void save(Libro l) {
+		
+	}
+
+
+	@Override
+	public int update(Libro l) {
+		return 0;
+	}
+
+
+	@Override
+	public void delete(int id_libro) {
+		
 	}
 	
 

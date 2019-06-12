@@ -7,11 +7,10 @@ import takebook.model.Autore;
 import takebook.model.Libro;
 
 public interface LibroDAO {
-
-
- 	//public void save(Libro l);
-	//public int update(Libro l);
-	//public void delete(int id_libro);
+	
+	public void save(Libro l);
+	public int update(Libro l);
+	public void delete(int id_libro);
 	public List<Libro> read(String titolo);
 	public Libro getId(int id_libro);
 	public ArrayList<Libro> readAll();

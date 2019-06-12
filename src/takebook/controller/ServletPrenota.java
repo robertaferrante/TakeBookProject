@@ -14,8 +14,6 @@ import takebook.checkLogin.CheckLogin;
 import takebook.model.DAO.LibroDAO;
 import takebook.model.DAO.impl.LibroDAOimpl;
 
-
-
 /**
  * Servlet implementation class ServletPrenota
  */
@@ -27,42 +25,33 @@ public class ServletPrenota extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	
     public ServletPrenota() {
-        super();
-      
+        super(); 
     }
     
     public void init(ServletConfig config) throws ServletException{
     	ServletPrenota.libDAO = new LibroDAOimpl();
-
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CheckLogin.checkLogin(request, response);
-
 		int id_libro = Integer.parseInt(request.getParameter("libro"));
 		String email = (String) request.getSession().getAttribute("email");
-		
 		request.setAttribute("prenotato", libDAO.prenota(id_libro, email));
 		RequestDispatcher d = request.getRequestDispatcher("./VIEW/Ricerca.jsp");
 		d.forward(request, response);
-		
-		
-		
-		
-		
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

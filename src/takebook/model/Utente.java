@@ -1,7 +1,7 @@
 package takebook.model;
 
 public class Utente {
-	//attributi
+	//Variabili di istanza
 	private String email;
 	private String password;
 	private String nome;
@@ -9,12 +9,12 @@ public class Utente {
 	private String indirizzo;
 	private String citta;
 	
-	//costruttore vuoto
+	//Costruttore vuoto
 	public Utente() {
 
 	}
 	
-	//costruttore con parametri
+ 	//Costruttore parametrico
 	public Utente(String email, String password, String nome, String cognome, String indirizzo, String citta) {
 		this.email=email;
 		this.password=password;
@@ -24,7 +24,7 @@ public class Utente {
 		this.citta=citta;
 	}
 
-	//getter e setter
+ 	//Getter e setter
 	public String getEmail() {
 		return email;
 	}
@@ -61,6 +61,4 @@ public class Utente {
 	public void setCitta(String citta) {
 		this.citta = citta;
 	}
-
-
 }

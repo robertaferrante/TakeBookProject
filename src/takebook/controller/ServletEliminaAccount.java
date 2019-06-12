@@ -27,34 +27,30 @@ public class ServletEliminaAccount extends HttpServlet {
      */
     public ServletEliminaAccount() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     public void init(ServletConfig config) throws ServletException{
     	ServletEliminaAccount.utDAO = new UtenteDAOimpl();
-    	
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		HttpSession session = request.getSession();
 		String email = (String) session.getAttribute("email");
 		boolean eliminato =  utDAO.delete(email);
-
 		request.setAttribute("eliminato", eliminato);
-		RequestDispatcher d = request.getRequestDispatcher("./welcome.html");
+		RequestDispatcher d = request.getRequestDispatcher("/welcome.html");
 		d.forward(request, response);
-
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

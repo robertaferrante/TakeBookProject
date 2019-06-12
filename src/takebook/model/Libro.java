@@ -3,7 +3,7 @@ package takebook.model;
 import java.util.Date;
 
 public class Libro {
-	//attributi
+	//Variabili di istanza
 	private int id_libro;
 	private String titolo;
 	private String isbn;
@@ -13,13 +13,12 @@ public class Libro {
     private Date data_riconsegna;
     private String email_utente;
    
-    //costruttore vuoto
+	//Costruttore vuoto
      public Libro() {
-
+    	 
      }
 	
-     //costruttore con parametri
-
+ 	//Costruttore parametrico
      public Libro(int id_libro,String titolo,String isbn,int anno_pubblicazione,String categoria) {
     	this.id_libro=id_libro;
     	this.titolo=titolo;
@@ -28,7 +27,7 @@ public class Libro {
     	this.categoria=categoria;
      }
      
-    //getter e setter
+ 	//Getter e setter
 	public int getId_libro() {
 		return id_libro;
 	}
@@ -82,6 +81,4 @@ public class Libro {
 	public String toString() {
 		return titolo+" "+isbn+" "+anno_pubblicazione+" "+categoria;
 	}
-
-
- }
+}

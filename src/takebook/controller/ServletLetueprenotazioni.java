@@ -27,29 +27,24 @@ public class ServletLetueprenotazioni extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	
     public ServletLetueprenotazioni() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     public void init(ServletConfig config) throws ServletException{
     	ServletLetueprenotazioni.libDAO = new LibroDAOimpl();
-
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		CheckLogin.checkLogin(request, response);
 		String email = (String) request.getSession().getAttribute("email");
-		
 		List<Libro> l = libDAO.getPrenotati(email);
-		
-		
 		request.setAttribute("prenotazioni", l);
-		
 		RequestDispatcher rd = request.getRequestDispatcher("./VIEW/letueprenotazioni.jsp");
 		rd.forward(request, response);
 	}
@@ -57,6 +52,7 @@ public class ServletLetueprenotazioni extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

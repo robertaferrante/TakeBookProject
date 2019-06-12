@@ -1,24 +1,26 @@
 package takebook.model;
 
 public class Autore {
-	//attributi
+	//Variabili di istanza
 	private int id_autore;
 	private String nome;
 	private String cognome;
 	private String nazione;
-	//costruttore senza parametri
+	
+	//Costruttore vuoto
 	public Autore() {
-
+		
 	}
-	//costruttore con parametri
-
+	
+	//Costruttore parametrico
 	public Autore(int id_autore, String nome, String cognome, String nazione) {
 		this.id_autore=id_autore;
 		this.nome=nome;
 		this.cognome=cognome;
 		this.nazione=nazione;
 	}
-	//getter e setter
+	
+	//Getter e setter
 	public int getId_autore() {
 		return id_autore;
 	}

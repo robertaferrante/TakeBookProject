@@ -27,36 +27,32 @@ public class ServletLibri extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	
     public ServletLibri() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     public void init(ServletConfig config) throws ServletException{
     	ServletLibri.libDAO = new LibroDAOimpl();
-
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CheckLogin.checkLogin(request, response);
-
 		ArrayList<Libro> listaLibri= libDAO.readAll();
-		
 		request.setAttribute("listaLibri", listaLibri);
 		RequestDispatcher rd = request.getRequestDispatcher("./VIEW/Ricerca.jsp");
-		rd.forward(request, response);
-		
+		rd.forward(request, response);	
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }
