@@ -91,8 +91,8 @@
 			<li><img align="middle" style="margin-left:33%; margin-top:10%" src="http://localhost:8080/TakeBook/images/img_avatar.png" alt="Avatar" class="avatar"></li>
 		
 		<br><br>
-		<li><a href="http://localhost:8080/TakeBook/VIEW/areapersonale.jsp">My Area</a></li>
-		  <li><a class="active" href="http://localhost:8080/TakeBook/VIEW/Menu.jsp">Home</a></li>
+		<li><a href="http://localhost:8080/TakeBook/VIEW/areapersonale.jsp"class="active">My Area</a></li>
+		  <li><a href="http://localhost:8080/TakeBook/VIEW/Menu.jsp">Home</a></li>
 		  <li><a href="http://localhost:8080/TakeBook/ServletLetueprenotazioni">Le tue prenotazioni</a></li>
 		  <li><a href="http://localhost:8080/TakeBook/ServletAutori">Autori</a></li>
 		  <li><a href="http://localhost:8080/TakeBook/ServletLibri">Libri</a></li>
@@ -106,13 +106,27 @@
 	  			
 	  			
 	  			<div style="margin-left:30%;margin-right:15%;margin-top:10%;"  >
-	  			<form action="http://localhost:8080/TakeBook/ServletRicerca" method="POST">
-				  <input type="radio" name="ricerca" value="libro" required> Ricerca per titolo<br>
-				  <input type="radio" name="ricerca" value="autore"> Ricerca per autore (Cognome)<br>
-				  <input type="radio" name="ricerca" value="categoria"> Ricerca per categoria<br><br>
-				  <input type="text" placeHolder="Cerca" name="cerca" id ="R">
-				  <button style="margin-left:20%" type="submit" >Cerca</button>
-				</form> 
+	  			
+				 <h2> Nome: <%= request.getSession().getAttribute("nome") %> <br>
+				   Cognome: <%= request.getSession().getAttribute("cognome") %><br>
+				   Email: <%= request.getSession().getAttribute("email") %><br>
+				   Indirizzo: <%= request.getSession().getAttribute("indirizzo") %><br>
+				   Citta: <%= request.getSession().getAttribute("citta") %><br>
+				   
+				</h2>
+				
+				<form action="http://localhost:8080/TakeBook/ServletEliminaAccount" method="post">
+				<button  type="submit" name="elimina" >Elimina Account</button>
+				</form>
+				
+				<form action="http://localhost:8080/TakeBook/ServletCambiaPassword" method="post">
+				
+		    	<b>Nuova password</b><br>
+		    	<input type="password" placeholder="Inserisci la tua nuova Password" name="pswnew" required><br>
+		    	
+				<button  type="submit" >Cambia password</button>
+				</form>
+					
 				</div>
 		</div>
 		

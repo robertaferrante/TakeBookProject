@@ -29,7 +29,7 @@
 			    border: 3px solid #f1f1f1;
 			    background-color: white}
 		
-		input[type=text], input[type=password] {
+		input[type=email], input[type=password] {
 		  width: 100%;
 		  padding: 12px 20px;
 		  margin: 8px 0;
@@ -89,7 +89,7 @@
 		
 		  	<div class="container">
 		    	<label for="em"><b>Inserisci la tua email:</b></label>
-		     	<input type="text" placeHolder="Email" name="email" id ="E">
+		     	<input type="email" placeHolder="Email" name="email" id ="E">
 		
 		    	<label for="psw"><b>Inserisci la tua password:</b></label>
 		    	<input type="password" placeHolder="Password" name="password" id="P" required>

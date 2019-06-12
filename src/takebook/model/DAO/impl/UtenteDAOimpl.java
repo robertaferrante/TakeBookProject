@@ -80,14 +80,17 @@ public class UtenteDAOimpl implements UtenteDAO {
 	}
 
 	@Override
-	public void delete(String email) {
+	public boolean delete(String email) {
+		boolean eliminato = false;
 		String q = "DELETE FROM utente WHERE email = '"+email+"'";
 		try {
 			Statement stmt = dbConn.getConnection().createStatement();
 			stmt.executeQuery(q);
+			eliminato = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return eliminato;
 		
 		
 		
@@ -113,6 +116,27 @@ public class UtenteDAOimpl implements UtenteDAO {
 		
 		return u;
 		
+	}
+
+	@Override
+	public boolean updatePassword(String password, String email) {
+		boolean aggiornato = false;
+		String q ="UPDATE utente SET password = ? where email=?  ";
+		try {
+			PreparedStatement ps = dbConn.getConnection().prepareStatement(q);
+			
+			ps.setString(1, password);
+			ps.setString(2, email);
+			
+			
+			ps.executeQuery();
+			aggiornato=true;
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return aggiornato;
 	}
 
 }

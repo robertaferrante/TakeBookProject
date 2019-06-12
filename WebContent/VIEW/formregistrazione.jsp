@@ -60,7 +60,7 @@
 			  cursor: pointer;
 			  width: 100%;
 			}
-			input[type=text], input[type=password] {
+			input[type=text], input[type=password], input[type=email] {
 			  width: 100%;
 			  padding: 15px;
 			  margin: 5px 0 22px 0;
@@ -133,7 +133,7 @@
 	    	<input type="text" placeholder="Inserisci la tua citta" name="citta">
 	    	
 		    <label for="email"><b>Email</b></label>
-		    <input type="text" placeholder="Inserisci Email" name="email" required >
+		    <input type="email" placeholder="Inserisci Email" name="email" required >
 		
 		    <label for="psw"><b>Password</b></label>
 		    <input type="password" placeholder="Inserisci Password" name="psw" required>
