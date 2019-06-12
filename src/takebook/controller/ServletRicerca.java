@@ -59,11 +59,20 @@ public class ServletRicerca extends HttpServlet {
 
 		}
 		if(ricerca.equals("autore")) {
-			request.setAttribute("listaLibri", autDAO.getLibro(testo));
-			
+			ArrayList <Libro> listaLibri = (ArrayList<Libro>) autDAO.getLibro(testo);
+			request.setAttribute("listaLibri", listaLibri);
+			if (listaLibri.size()==0) {
+				request.setAttribute("notfound", "");
+
+			}
 		}
 		if(ricerca.equals("categoria")) {
-			request.setAttribute("listaLibri", libDAO.getLibroByCategoria(testo));
+			ArrayList <Libro> listaLibri = (ArrayList<Libro>)  libDAO.getLibroByCategoria(testo);
+			request.setAttribute("listaLibri", listaLibri);
+			if (listaLibri.size()==0) {
+				request.setAttribute("notfound", "");
+
+			}
 			
 		}
 		RequestDispatcher d = request.getRequestDispatcher("./VIEW/Ricerca.jsp");

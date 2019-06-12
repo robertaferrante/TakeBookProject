@@ -97,7 +97,7 @@
 						<%} else if(request.getAttribute("prenotato") != null && (boolean)request.getAttribute("prenotato")==false) {%> 
 							<div><p  style="color:#FF0000" > *Questo libro non &egrave al momento disponibile</p></div>
 							<%} else if(request.getAttribute("notfound")==""){ %>
-		        			<div> <p  style="color:#FF0000" > *Questo libro non &egrave presente nel nostro archivio  </p> </div>
+		        			<div> <p  style="color:#FF0000" > *Non &egrave possibile soddisfare la richiesta  </p> </div>
 		        			<%} %>
 				</div>		
 				<% if(request.getAttribute("prenotato") == null && request.getAttribute("notfound")!="") { %>
