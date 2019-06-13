@@ -9,10 +9,10 @@
 	<body>
 		<% if(request.getAttribute("err").equals(1)){
 			%> Username e password errati <%
-		}
+			}
 			if(request.getAttribute("err").equals(2)){
 			%> Utente gi&agrave  presente <%
-		}
+			}
 		%>
 		
 	</body>

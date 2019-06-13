@@ -44,7 +44,6 @@ public class ServletCambiaPassword extends HttpServlet {
 		String email = (String) session.getAttribute("email");
 		String pswnew = request.getParameter("pswnew");
 		boolean cambiato = utDAO.updatePassword(pswnew, email);
-		request.setAttribute("nuovapassword", utDAO.updatePassword(pswnew, email));
 		request.setAttribute("cambiato", cambiato);
 		RequestDispatcher rd = request.getRequestDispatcher("./VIEW/areapersonale.jsp");  
 	    rd.forward(request,response);

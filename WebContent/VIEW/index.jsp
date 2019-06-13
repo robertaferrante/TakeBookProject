@@ -26,7 +26,8 @@
 				    position: absolute;
 				    margin-top: -19%;
 				    border: 3px solid #f1f1f1;
-				    background-color: white}
+				    background-color: white;
+			}
 			
 			input[type=email], input[type=password] {
 			  width: 100%;

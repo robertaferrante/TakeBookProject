@@ -24,10 +24,6 @@ import takebook.model.DAO.impl.UtenteDAOimpl;
 public class ServletForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static UtenteDAO utDAO;
-    
-	 public void init(ServletConfig config) throws ServletException{
-	    	ServletForm.utDAO = new UtenteDAOimpl();
-	    }
 	 
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,6 +31,10 @@ public class ServletForm extends HttpServlet {
 	 
     public ServletForm() {
         super();
+    }
+    
+    public void init(ServletConfig config) throws ServletException{
+    	ServletForm.utDAO = new UtenteDAOimpl();
     }
 
 	/**

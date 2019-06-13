@@ -21,16 +21,7 @@
 		  		background-size: cover;
 		  		height: 40%;
 			}
-			
-			input[type=text] {
-			  width: 100%;
-			  padding: 12px 20px;
-			  margin: 8px 0;
-			  display: inline-block;
-			  border: 1px solid #ccc;
-			  box-sizing: border-box;
-			}
-			
+		
 			button {
 			  background-color: #4CAF50;
 			  color: white;
@@ -72,37 +63,37 @@
 			}
 			
 			table {
-				  font-family: arial, sans-serif;
-				  width: 150%;
-				  border-radius: 20px 20px 20px 20px ;
-				  border: 4px solid #4CAF50;
-				  margin-top:15%; 
-				  margin-left:-35%
-				}
-				
-				th {
-				  text-align: left;
-				  padding: 8px;
-				  font-family: bold;
-				  width: 25%;
-				}
-				
-				tr:nth-child(even) {
-				  background-color: #dddddd;
-				 
-				  
-				}
-				td{
-				width: 25%;
-				
-				}
-				.avatar {
- 				width: 70px;
-  				height: 70px;
-  				border-radius: 50%;
-  				margin-right: 2%;
-  				align:center;
-				}
+			  font-family: arial, sans-serif;
+			  width: 150%;
+			  border-radius: 20px 20px 20px 20px ;
+			  border: 4px solid #4CAF50;
+			  margin-top:15%; 
+			  margin-left:-35%
+			}
+			
+			th {
+			  text-align: left;
+			  padding: 8px;
+			  font-family: bold;
+			  width: 25%;
+			}
+			
+			tr:nth-child(even) {
+			  background-color: #dddddd;
+			 
+			  
+			}
+			td{
+			width: 25%;
+			
+			}
+			.avatar {
+				width: 70px;
+ 				height: 70px;
+ 				border-radius: 50%;
+ 				margin-right: 2%;
+ 				align:center;
+			}
 		</style>
 	</head>
 	<body>
@@ -118,7 +109,7 @@
 			<li><a href="http://localhost:8080/TakeBook/ServletLogout">Logout</a></li>
 		</ul>
 			
-			<div style="margin-left:35%;margin-right:10%;padding:1px 16px;height:1000px;"  >
+			<div style="margin-left:35%;margin-right:10%;padding:1px 16px;height:1000px;">
 				<div> <% if(request.getAttribute("restituito") != null && (boolean)request.getAttribute("restituito")==true){
 							%>
 							<div><h3 style="color:#FF0000;margin-top:15%;"> *La restituzione e avvenuta con successo</h3> </div>
@@ -128,26 +119,25 @@
 				<form action="./ServletRestituisci">
 	         	<table>   
 		         	<tr>
-		            		<th> Restituisci </th>
-		            		<th > Titolo </th>
+		            		<th > Restituisci </th>
+		            		<th> Titolo </th>
 		            		<th> Anno </th>
 		            		<th> ISBN </th>
 		            		<th> Categoria </th>
 		            		<th> Prenotazione </th>
 		            		<th> Riconsegna </th>
-		            		<th> Email </th>
+
 		            </tr>
 	            
 		            <c:forEach var="libro" items="${prenotazioni}">
 		            	<tr>
-		       			 	<td><input type="radio" name="libro" value="${libro.id_libro}" required></td>
+		       			 	<td style="border-radius: 0px 0px 0px 10px;"><input type="radio" name="libro" value="${libro.id_libro}" required></td>
 		          			<td>${libro.titolo}</td>
 		          			<td>${libro.anno_pubblicazione}</td>
 		          			<td>${libro.isbn}</td>
 		          			<td>${libro.categoria}</td>
 		          			<td>${libro.data_prenotazione}</td>
-		          			<td>${libro.data_riconsegna}</td>
-		          			<td>${libro.email_utente}</td>
+		          			<td style="border-radius: 0px 0px 10px 0px">${libro.data_riconsegna}</td>
 		      			 </tr>
 		   			</c:forEach>
 		        </table>

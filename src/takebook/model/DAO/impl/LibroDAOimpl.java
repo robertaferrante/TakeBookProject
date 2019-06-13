@@ -111,9 +111,9 @@ public class LibroDAOimpl implements LibroDAO{
 	public boolean prenota(int id_libro, String email) {
 		boolean prenotato = false;
 		Libro l = this.getId(id_libro);
-		if(l.getData_prenotazione() == null) {
+		if(l.getEmail_utente() == null) {
 			if(id_libro != 0) {
-				String q = "UPDATE LIBRO SET DATA_PRENOTAZIONE = '10-mag-2019',DATA_RICONSEGNA = NULL, EMAIL_UTENTE = ?  WHERE ID_LIBRO = ?";
+				String q = "UPDATE LIBRO SET DATA_PRENOTAZIONE = '13-giu-2019',DATA_RICONSEGNA = NULL, EMAIL_UTENTE = ?  WHERE ID_LIBRO = ?";
 				try {
 					PreparedStatement ps = dbConn.getConnection().prepareStatement(q);
 					ps.setString(1, email);

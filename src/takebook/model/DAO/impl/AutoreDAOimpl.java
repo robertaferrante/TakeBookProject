@@ -47,12 +47,11 @@ public class AutoreDAOimpl implements AutoreDAO {
 	public ArrayList<Autore> readAll() {
 		ArrayList<Autore> ListaAutori = new ArrayList<Autore>();
 		String query = "SELECT * FROM Autore";
-		Autore a1 = null;
 		try {
 			stm = dbConn.getConnection().createStatement();
 			ResultSet rs = stm.executeQuery(query);
 			while (rs.next()) {
-				a1 = new Autore(rs.getInt("id_autore"),rs.getString("nome"),rs.getString("cognome"),rs.getString("nazione"));
+				Autore a1 = new Autore(rs.getInt("id_autore"),rs.getString("nome"),rs.getString("cognome"),rs.getString("nazione"));
 				ListaAutori.add(a1);
 			}
 		} catch (SQLException e) {

@@ -3,7 +3,6 @@
  
 <% if(session.getAttribute("nome") == null )
 	{
-	
 		RequestDispatcher rd = request.getRequestDispatcher("./index.jsp");
 		rd.forward(request, response);
 	}
@@ -82,17 +81,17 @@
 			}
 			
 			table {
-				  font-family: arial, sans-serif;
-				  width: 60%;
-				  height:25%;
-				  border-radius: 20px 20px 20px 20px ;
-				  border: 4px solid #4CAF50;
-				  
-				}
-				
-				.eliminazione {
-			 	 background-color: #f44336;
-				}
+			  font-family: arial, sans-serif;
+			  width: 60%;
+			  height:25%;
+			  border-radius: 20px 20px 20px 20px ;
+			  border: 4px solid #4CAF50;
+			  
+			}
+			
+			.eliminazione {
+		 	 background-color: #f44336;
+			}
 			
 		</style>
 	</head>
@@ -137,29 +136,26 @@
 		</table>
 	
 				<form action="http://localhost:8080/TakeBook/ServletCambiaPassword" method="post">
-				<br>
-				<br>
-				<br>
-				<br>
-		    	<b>Nuova password</b><br>
-		    	<input type="password" placeholder="Inserisci la tua nuova Password" name="pswnew" required><br>
-		    	
-				<button  type="submit" >Cambia password</button>
+					<br>
+					<br>
+					<br>
+					<br>
+			    	<b>Nuova password</b><br>
+			    	<input type="password" placeholder="Inserisci la tua nuova Password" name="pswnew" required><br>
+			    	
+					<button  type="submit" >Cambia password</button>
 				</form>
 				<div> 	
 					<% if(request.getAttribute("cambiato") != null && (boolean)request.getAttribute("cambiato")==true){
 					%> 
 						<div><h3 style="color:#FF0000;">  *La modifica &egrave avvenuta con successo</h3> </div>
 					<%} %>
-					</div>
+				</div>
 				
 				
 				<form action="http://localhost:8080/TakeBook/ServletEliminaAccount" method="post">
 				<button  type="submit" class="eliminazione" name="elimina"style="margin-left:95%; margin-top:-4%" >Elimina Account</button>
 				</form>	
-				
-				
 		</div>
-		
 	</body>
 </html>

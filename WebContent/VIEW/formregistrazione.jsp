@@ -23,11 +23,9 @@
 			  background-image: url('https://assets.poetryfoundation.org/uploads/contentImages/_1092xAUTO_fit_top-center/library-header.jpg?1092');
 			  height: 100%;
 			  background-position: center;
-  				background-repeat: no-repeat;
-  				background-size: cover;
-  				 height: 180vh;
- 	 		 
- 	 		  
+			  background-repeat: no-repeat;
+  		      background-size: cover;
+  			  height: 180vh;
 			}
 			
 			* {
@@ -35,14 +33,15 @@
 			}
 			
 			form {left: 50%;
-				right: 50%;
-			    top: 50%;
-			    margin-left: -25%;
-			    margin-right: -25%;
-			    position: absolute;
-			    margin-top: -19%;
-			    margin-bottom: 5%;
-			    border: 3px solid #f1f1f1;}
+				  right: 50%;
+				  top: 50%;
+				  margin-left: -25%;
+				  margin-right: -25%;
+				  position: absolute;
+				  margin-top: -19%;
+				  margin-bottom: 5%;
+				  border: 3px solid #f1f1f1;
+			}
 			
 			/* Add padding to containers */
 			.container {

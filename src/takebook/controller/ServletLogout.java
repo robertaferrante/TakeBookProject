@@ -18,9 +18,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/ServletLogout")
 public class ServletLogout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	public void init(ServletConfig config) throws ServletException{
-	}
        
     /**
      * @see HttpServlet#HttpServlet()

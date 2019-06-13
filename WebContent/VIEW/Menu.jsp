@@ -88,23 +88,21 @@
 		
 		<ul>
 			<li><img align="middle" style="margin-left:33%; margin-top:10%" src="http://localhost:8080/TakeBook/images/img_avatar.png" alt="Avatar" class="avatar"></li>
-		
 		<br><br>
-		<li><a href="http://localhost:8080/TakeBook/VIEW/areapersonale.jsp">My Area</a></li>
-		  <li><a class="active" href="http://localhost:8080/TakeBook/VIEW/Menu.jsp">Home</a></li>
-		  <li><a href="http://localhost:8080/TakeBook/ServletLetueprenotazioni">Le tue prenotazioni</a></li>
-		  <li><a href="http://localhost:8080/TakeBook/ServletAutori">Autori</a></li>
-		  <li><a href="http://localhost:8080/TakeBook/ServletLibri">Libri</a></li>
-		  <li><a href="http://localhost:8080/TakeBook/ServletLogout">Logout</a></li>
+			<li><a href="http://localhost:8080/TakeBook/VIEW/areapersonale.jsp">My Area</a></li>
+		  	<li><a class="active" href="http://localhost:8080/TakeBook/VIEW/Menu.jsp">Home</a></li>
+		  	<li><a href="http://localhost:8080/TakeBook/ServletLetueprenotazioni">Le tue prenotazioni</a></li>
+		  	<li><a href="http://localhost:8080/TakeBook/ServletAutori">Autori</a></li>
+		  	<li><a href="http://localhost:8080/TakeBook/ServletLibri">Libri</a></li>
+		  	<li><a href="http://localhost:8080/TakeBook/ServletLogout">Logout</a></li>
 		</ul>
 	  				
 	  				
 	  			
-			<div style="margin-left:20%;margin-right:15%;padding:1px 16px;height:1000px;"  >
-	  			<h1 align="center">Ciao <%= request.getSession().getAttribute("nome") %></h1>
-	  			
-	  			
-	  			<div style="margin-left:30%;margin-right:15%;margin-top:10%;"  >
+		<div style="margin-left:20%;margin-right:15%;padding:1px 16px;height:1000px;">
+	  		<h1 align="center">Ciao <%= request.getSession().getAttribute("nome") %></h1>
+	  		
+	  		<div style="margin-left:30%;margin-right:15%;margin-top:10%;">
 	  			<form action="http://localhost:8080/TakeBook/ServletRicerca" method="POST">
 				  <input type="radio" name="ricerca" value="libro" required> Ricerca per titolo<br>
 				  <input type="radio" name="ricerca" value="autore"> Ricerca per autore (Cognome)<br>
@@ -112,7 +110,7 @@
 				  <input type="text" placeHolder="Cerca" name="cerca" id ="R">
 				  <button style="margin-left:20%" type="submit" >Cerca</button>
 				</form> 
-				</div>
+			</div>
 		</div>
 		
 	</body>

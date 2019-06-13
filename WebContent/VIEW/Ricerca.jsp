@@ -79,10 +79,12 @@
 				  font-family: bold;
 				}
 				
+				tr:nth-child(odd) {
+				  background-color: white;
+				}
 				tr:nth-child(even) {
 				  background-color: #dddddd;
 				}
-				
 				
 				.avatar {
  				width: 70px;
@@ -90,7 +92,6 @@
   				border-radius: 50%;
   				margin-right: 2%;
   				align:center;
-  				
 			}
 			
 			</style>
@@ -108,17 +109,17 @@
 		  		<li><a class="active"  href="http://localhost:8080/TakeBook/ServletLibri">Libri</a></li>
 			    <li><a href="http://localhost:8080/TakeBook/ServletLogout">Logout</a></li>
 			</ul>
-				<div style="margin-left:35%;margin-right:10%;padding:1px 16px;height:1000px;"  >		
-		        <div> 	<% if(request.getAttribute("prenotato") != null && (boolean)request.getAttribute("prenotato")==true){
-							%>
-							<div><h3 style="color:#FF0000;margin-top:15%;">  *La prenotazione &egrave avvenuta con successo</h3> </div>
+				<div style="margin-left:35%;margin-right:10%;padding:1px 16px;height:1000px;">		
+		        	<div> 	
+		        		<% if(request.getAttribute("prenotato") != null && (boolean)request.getAttribute("prenotato")==true){
+							%><div><h3 style="color:#FF0000;margin-top:15%;">  *La prenotazione &egrave avvenuta con successo</h3> </div>
 						<%} else if(request.getAttribute("prenotato") != null && (boolean)request.getAttribute("prenotato")==false) {%> 
-							<div><h3 style="color:#FF0000;margin-top:15%;">  *Questo libro non &egrave al momento disponibile</h3> </div>
+								<div><h3 style="color:#FF0000;margin-top:15%;">  *Questo libro non &egrave al momento disponibile</h3> </div>
 							<%} else if(request.getAttribute("notfound")==""){ %>
-		        			<div><h3 style="color:#FF0000;margin-top:15%;">  *Non &egrave possibile soddisfare la richiesta  </h3> </div>
-		        			<%} %>
-				</div>		
-				<% if(request.getAttribute("prenotato") == null && request.getAttribute("notfound")!="") { %>
+		        				<div><h3 style="color:#FF0000;margin-top:15%;">  *Non &egrave possibile soddisfare la richiesta  </h3> </div>
+		        				<%} %>
+					</div>		
+				<% if(request.getAttribute("prenotato") == null && request.getAttribute("notfound")!=""){ %>
 				<form action="./ServletPrenota">
 	         	<table>   
 		         	<tr>
@@ -130,13 +131,13 @@
 		            </tr>
 	            
 		            <c:forEach var="libro" items="${listaLibri}">
-		            	<tr>
-		       			 	<td  style="border-radius: 0px 0px 0px 10px"><input type="radio" name="libro" value="${libro.id_libro}" required="required"></td>
-		          			<td>${libro.titolo}</td>
-		          			<td>${libro.anno_pubblicazione}</td>
-		          			<td>${libro.isbn}</td>
-		          			<td style="border-radius: 0px 0px 10px 0px">${libro.categoria}</td>
-		      			 </tr>
+	            	<tr>
+	       			 	<td  style="border-radius: 0px 0px 0px 10px"><input type="radio" name="libro" value="${libro.id_libro}" required="required"></td>
+	          			<td>${libro.titolo}</td>
+	          			<td>${libro.anno_pubblicazione}</td>
+	          			<td>${libro.isbn}</td>
+	          			<td style="border-radius: 0px 0px 10px 0px">${libro.categoria}</td>
+	      			 </tr>
 		   			</c:forEach>
 		        </table>
 		        <button type="submit">Prenota</button>

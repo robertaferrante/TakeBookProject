@@ -76,13 +76,11 @@ public class UtenteDAOimpl implements UtenteDAO {
 		boolean eliminato = false;
 		String q = "DELETE FROM utente WHERE email = ?";
 		try {
-			System.out.println("AAAA " + q);
 			PreparedStatement ps = dbConn.getConnection().prepareStatement(q);
 			ps.setString(1, email);
 			ps.executeUpdate();
-			//ps.close();
 			eliminato = true;
-			System.out.println("BBBB");
+			//ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
